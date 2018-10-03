@@ -6,16 +6,26 @@ using System.Threading.Tasks;
 
 namespace Custom_List_Project
 {
-    class CustomList<T>
+    public class CustomList<T>
     {
         T[] items = new T[1];
+        int count;
 
+        public int Count
+        {
+            get => count;
+        }
         public void Add()
         {
 
         }
 
         public void Remove()
+        {
+
+        }
+
+        public void SetCount()
         {
 
         }
