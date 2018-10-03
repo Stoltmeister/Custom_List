@@ -210,10 +210,11 @@ namespace CustomListUnitTestProject
             CustomList<int> customList = new CustomList<int>();
             int value = 10;
             int value1 = 22;
-            customList.Add(value);
-            int expected = customList.Count + 1;
+            
+            int expected = 2;
 
             //Act
+            customList.Add(value);
             customList.Add(value1);
             int actual = customList.Count;
 
@@ -227,12 +228,13 @@ namespace CustomListUnitTestProject
             //Arrange
             CustomList<int> customList = new CustomList<int>();
             int value = 10;
-            int value1 = 22;
-            customList.Add(value);
-            customList.Add(value1);
-            int expected = customList.Count - 1;
+            int value1 = 22; 
+            
+            int expected = 1;
 
             //Act
+            customList.Add(value);
+            customList.Add(value1);
             customList.Remove(value1);
             int actual = customList.Count;
 
@@ -248,11 +250,12 @@ namespace CustomListUnitTestProject
             int value = 10;
             int value1 = 22;
             int value2 = 33;
-            customList.Add(value);
-            customList.Add(value1);
-            int expected = customList.Count;
+            
+            int expected = 2;
 
             //Act
+            customList.Add(value);
+            customList.Add(value1);
             customList.Remove(value1);
             customList.Add(value2);
             int actual = customList.Count;
@@ -263,7 +266,86 @@ namespace CustomListUnitTestProject
 
         // *** Indexing Tests ***
 
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void Indexer_EmptyListIndexZero_ArgumentOutOfRangeExceptionThrown()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>();
+            int index = 2;
+            //Act
+            customList.Remove(index);            
+        }
+
+        [TestMethod]
+        public void Indexer_ListWithOneElement_IndexZeroGivesUsTheOneElement()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>();
+            int index = 0;
+            int expected = 11;
+            //Act
+            customList.Add(expected);
+            int actual = customList[index];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }        
+
+        [TestMethod]
+        public void Indexer_ListWithTwoElement_IndexZeroGivesUsTheFirstElement()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>();
+            int index = 0;
+            int expected = 11;
+            int value = 20;
+            //Act
+            customList.Add(expected);
+            customList.Add(value);
+            int actual = customList[index];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Indexer_ListWithTwoElement_IndexOneGivesUsLastElement()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>();
+            int index = 1;
+            int expected = 11;
+            int value = 20;
+            //Act
+            customList.Add(value);
+            customList.Add(expected);
+            int actual = customList[index];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Indexer_ListWithMultipleElements_IndexOfListCountMinusOneGivesUsLastElement()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>();
+            int expected = 11;
+            int value = 20;
+            //Act
+            customList.Add(value);
+            customList.Add(expected);
+            int index = customList.Count - 1;
+            int actual = customList[index];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
         // *** '-' Operator Overload Tests ***
+
+
 
         // *** '+' Operator Overload Tests ***
 
