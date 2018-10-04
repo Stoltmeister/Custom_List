@@ -30,9 +30,35 @@ namespace Custom_List_Project
 
         }
 
-        public virtual void ToString()
+        public override string ToString()
         {
-
+            return "";
         }
+
+        public static CustomList<T> operator + (CustomList<T> List1, CustomList<T> List2)
+        {
+            CustomList<T> newList = new CustomList<T>();
+
+            // TO DO
+            return newList;
+        }
+
+        public static CustomList<T> operator - (CustomList<T> List1, CustomList<T> List2)
+        {
+            CustomList<T> newList = new CustomList<T>();
+
+            // TO DO
+            return newList;
+        }
+
+        public static CustomList<T> Zip(CustomList<T> List1, CustomList<T> List2)
+        {
+            CustomList<T> newList = new CustomList<T>();
+
+            // TO DO
+            return newList;
+        }
+
+
     }
 }

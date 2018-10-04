@@ -336,19 +336,160 @@ namespace CustomListUnitTestProject
             //Act
             customList.Add(value);
             customList.Add(expected);
-            int index = customList.Count - 1;
+            int index = 1; 
             int actual = customList[index];
 
             //Assert
             Assert.AreEqual(expected, actual);
         }
 
-        // *** '-' Operator Overload Tests ***
-
-
-
         // *** '+' Operator Overload Tests ***
 
+        [TestMethod]
+        public void PlusOverload_TwoListsT_NewListCountEqualsSumOfTwoListsCounts()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>();
+            CustomList<int> customList1 = new CustomList<int>();
+            CustomList<int> newList = new CustomList<int>();
+            int expected = 4;
+            int value = 11;
+            int value1 = 2;
+
+            //Act
+            customList.Add(value);
+            customList.Add(value1);
+            customList1.Add(value1);
+            customList1.Add(value);
+            newList = customList + customList1;
+            int actual = newList.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void PlusOverload_TwoListsT_NewListContainsAllValuesOfEachList()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>() { 11, 2 };
+            CustomList<int> customList1 = new CustomList<int>() { 4, 9 };
+            CustomList<int> newList = new CustomList<int>();
+            CustomList<int> expected = new CustomList<int>() { 11, 2, 4, 9 };
+
+            //Act
+            newList = customList + customList1;            
+
+            //Assert
+            Assert.AreEqual(expected, newList);
+        }
+        [TestMethod]
+        public void PlusOverload_ThreeListsT_NewListContainsAllValuesOfEachList()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>() { 11, 2 };
+            CustomList<int> customList1 = new CustomList<int>() { 4, 9 };
+            CustomList<int> customList2 = new CustomList<int>() { 55, 66 };
+            CustomList<int> expected = new CustomList<int>() { 11, 2, 4, 9, 55, 66 };
+            CustomList<int> newList = new CustomList<int>();
+
+            //Act
+            newList = customList + customList1 + customList2;
+
+            //Assert
+            Assert.AreEqual(expected, newList);
+        }
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void PlusOverload_TwoNullLists_()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>();
+            CustomList<int> customList1 = new CustomList<int>();
+            CustomList<int> newList = new CustomList<int>();
+
+            //Act
+            newList = customList + customList1;
+        }
+
+        // *** '-' Operator Overload Tests ***
+
+        [TestMethod]
+        public void MinusOverload_TwoIdenticalListsSubtracted_NewListEmpty()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>() { 11, 2 };
+            CustomList<int> customList1 = new CustomList<int>() { 2, 11 };
+            CustomList<int> actual = new CustomList<int>();
+            CustomList<int> expected = new CustomList<int>();
+            //Act
+            actual = customList - customList1;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void MinusOverload_TwoCompletelyDifferntListsSubtracted_NewListEqualsFirstList()
+        {
+            //Arrange
+            CustomList<int> expected = new CustomList<int>() { 11, 2 };
+            CustomList<int> customList1 = new CustomList<int>() { 7, 44 };
+            CustomList<int> actual = new CustomList<int>();
+            //Act
+            actual = expected - customList1;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void MinusOverload_TwoListsWithOneSameValue_NewListEqualsFirstListMinusMatchingValues()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>() { 11, 2 };
+            CustomList<int> customList1 = new CustomList<int>() { 2, 44 };
+            CustomList<int> expected = new CustomList<int>() { 11 };
+            CustomList<int> actual = new CustomList<int>();
+            //Act
+            actual = customList - customList1;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void MinusOverload_ThreeListsWithSomeSameValue_NewListEqualsFirstListMinusMatchingValuesOfOtherLists()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>() { 11, 2, 7, 8 };
+            CustomList<int> customList1 = new CustomList<int>() { 2, 44, 66, 77};
+            CustomList<int> customList2 = new CustomList<int>() { 9, 8, 23 };
+            CustomList<int> expected = new CustomList<int>() { 11, 7 };
+            CustomList<int> actual = new CustomList<int>();
+            //Act
+            actual = customList - customList1 - customList2;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void MinusOverload_ThreeListsWithSomeSameValue_NewListEqualsFirstListMinusMatchingValuesOfOtherLists()
+        {
+            //Arrange
+            CustomList<int> customList = new CustomList<int>() { 11, 2, 7, 8 };
+            CustomList<int> customList1 = new CustomList<int>() { 2, 44, 66, 77 };
+            CustomList<int> customList2 = new CustomList<int>() { 9, 8, 23 };
+            CustomList<int> expected = new CustomList<int>() { 11, 7 };
+            CustomList<int> actual = new CustomList<int>();
+            //Act
+            actual = customList - customList1 - customList2;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
         // *** List Zip Tests ***
+
     }
 }
