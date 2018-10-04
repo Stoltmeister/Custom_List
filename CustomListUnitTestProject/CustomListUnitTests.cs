@@ -473,83 +473,83 @@ namespace CustomListUnitTestProject
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]
-        public void MinusOverload_TwoStringListsWithSomeSameValues_NewListEqualsFirstListMinusMatchingStrings()
-        {
-            //Arrange
-            CustomList<string> customList = new CustomList<string>() { "11", "2", "7", "8" };
-            CustomList<string> customList1 = new CustomList<string>() { "2", "44", "66", "7" };
-            CustomList<int> expected = new CustomList<int>() { "11", "8" };
-            CustomList<int> actual = new CustomList<int>();
-            //Act
-            actual = customList - customList1;
+        //[TestMethod]
+        //public void MinusOverload_TwoStringListsWithSomeSameValues_NewListEqualsFirstListMinusMatchingStrings()
+        //{
+        //    //Arrange
+        //    CustomList<string> customList = new CustomList<string>() { "11", "2", "7", "8" };
+        //    CustomList<string> customList1 = new CustomList<string>() { "2", "44", "66", "7" };
+        //    CustomList<int> expected = new CustomList<int>() { "11", "8" };
+        //    CustomList<int> actual = new CustomList<int>();
+        //    //Act
+        //    actual = customList - customList1;
 
-            //Assert
-            Assert.AreEqual(expected, actual);
-        }
+        //    //Assert
+        //    Assert.AreEqual(expected, actual);
+        //}
 
         // *** List Zip Tests ***
 
-        [TestMethod]
-        public void Zip_TwoCustomLists_CountEqualsSumOfZippedListsCounts()
-        {
-            //Arrange
-            CustomList<int> customList = new CustomList<int>() { 11, 2, 7, 8 };
-            CustomList<int> customList1 = new CustomList<int>() { 66, 77 };
-            int expected = 6;
-            int actual;
-            CustomList<int> newList = new CustomList<int>();
-            //Act
-            newList = customList.Zip(customList1);
-            actual = newList.Count;
-            //Assert
-            Assert.AreEqual(expected, actual);
-        }
-        [TestMethod]
-        public void Zip_TwoCustomLists_NewListFirstValueIsSameAsFirstList()
-        {
-            //Arrange
-            CustomList<int> customList = new CustomList<int>() { 11, 2, 7, 8 };
-            CustomList<int> customList1 = new CustomList<int>() { 66, 77 };
-            int expected = 11;
-            int actual;
-            CustomList<int> newList = new CustomList<int>();
-            //Act
-            newList = customList.Zip(customList1);
-            actual = newList[0];
-            //Assert
-            Assert.AreEqual(expected, actual);
-        }
-        [TestMethod]
-        public void Zip_TwoCustomLists_ThirdValueInNewListIsSecondInFirstList()
-        {
-            //Arrange
-            CustomList<int> customList = new CustomList<int>() { 11, 9, 7, 8 };
-            CustomList<int> customList1 = new CustomList<int>() { 66, 77 };
-            int expected = 9;
-            int index = 2;
-            int actual;
-            CustomList<int> newList = new CustomList<int>();
-            //Act
-            newList = customList.Zip(customList1);
-            actual = newList[index];
-            //Assert
-            Assert.AreEqual(expected, actual);
-        }
-        [TestMethod]
-        public void Zip_TwoCustomLists_NewArrayHasCorrectAlternatingValues()
-        {
-            //Arrange
-            CustomList<int> customList = new CustomList<int>() { 11, 9, 7, 8 };
-            CustomList<int> customList1 = new CustomList<int>() { 66, 77 };
-            CustomList<int> expected = new CustomList<int>() { 11, 66, 9, 77, 7, 8 };
-            CustomList<int> actual = new CustomList<int>();
-            //Act
-            actual = customList.Zip(customList1);
+        //[TestMethod]
+        //public void Zip_TwoCustomLists_CountEqualsSumOfZippedListsCounts()
+        //{
+        //    //Arrange
+        //    CustomList<int> customList = new CustomList<int>() { 11, 2, 7, 8 };
+        //    CustomList<int> customList1 = new CustomList<int>() { 66, 77 };
+        //    int expected = 6;
+        //    int actual;
+        //    CustomList<int> newList = new CustomList<int>();
+        //    //Act
+        //    newList = customList.Zip(customList1);
+        //    actual = newList.Count;
+        //    //Assert
+        //    Assert.AreEqual(expected, actual);
+        //}
+        //[TestMethod]
+        //public void Zip_TwoCustomLists_NewListFirstValueIsSameAsFirstList()
+        //{
+        //    //Arrange
+        //    CustomList<int> customList = new CustomList<int>() { 11, 2, 7, 8 };
+        //    CustomList<int> customList1 = new CustomList<int>() { 66, 77 };
+        //    int expected = 11;
+        //    int actual;
+        //    CustomList<int> newList = new CustomList<int>();
+        //    //Act
+        //    newList = Zip(customList1);
+        //    actual = newList[0];
+        //    //Assert
+        //    Assert.AreEqual(expected, actual);
+        //}
+        //[TestMethod]
+        //public void Zip_TwoCustomLists_ThirdValueInNewListIsSecondInFirstList()
+        //{
+        //    //Arrange
+        //    CustomList<int> customList = new CustomList<int>() { 11, 9, 7, 8 };
+        //    CustomList<int> customList1 = new CustomList<int>() { 66, 77 };
+        //    int expected = 9;
+        //    int index = 2;
+        //    int actual;
+        //    CustomList<int> newList = new CustomList<int>();
+        //    //Act
+        //    newList = customList.Zip(customList1);
+        //    actual = newList[index];
+        //    //Assert
+        //    Assert.AreEqual(expected, actual);
+        //}
+        //[TestMethod]
+        //public void Zip_TwoCustomLists_NewArrayHasCorrectAlternatingValues()
+        //{
+        //    //Arrange
+        //    CustomList<int> customList = new CustomList<int>() { 11, 9, 7, 8 };
+        //    CustomList<int> customList1 = new CustomList<int>() { 66, 77 };
+        //    CustomList<int> expected = new CustomList<int>() { 11, 66, 9, 77, 7, 8 };
+        //    CustomList<int> actual = new CustomList<int>();
+        //    //Act
+        //    actual = customList.Zip(customList1);
            
-            //Assert
-            Assert.AreEqual(expected, actual);
-        }
+        //    //Assert
+        //    Assert.AreEqual(expected, actual);
+        //}
 
         //ToString Tests
         [TestMethod]

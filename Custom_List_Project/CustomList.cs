@@ -1,24 +1,28 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Custom_List_Project 
+namespace Custom_List_Project
 {
-    public class CustomList<T> where T : IComparable
+    public class CustomList<T> : IEnumerable where T : IComparable
     {
         T[] items = new T[1];
         int count;
-
-        public System.Collections.IEnumerator GetEnumerator()
+        
+        
+        public IEnumerator GetEnumerator()
         {
-            for (int i = 0; i < this.count; i++)
-            {
-                T element = this[i];
-                yield return element;
-            }
+            return (IEnumerator)this;
+
+            //for (int i = 0; i < this.count; i++)
+            //{
+            //    T element = this[i];
+            //    yield return element;
+            //}
         }
         // indexer
         public T this[int i]
@@ -26,7 +30,7 @@ namespace Custom_List_Project
             get { return this[i]; }
             set { this[i] = value; }
         }
-         public int CompareTo(object list)
+        public int CompareTo(object list)
         {
             return 0;
         }
@@ -45,23 +49,23 @@ namespace Custom_List_Project
         }
 
         private void SetCount()
-        {           
+        {
             foreach (T e in this)
             {
                 count++;
-            }            
+            }
         }
 
         public override string ToString()
         {
             return "";
-        }        
-        
-        public static CustomList<T> operator + (CustomList<T> List1, CustomList<T> List2)
+        }
+
+        public static CustomList<T> operator +(CustomList<T> List1, CustomList<T> List2)
         {
             CustomList<T> newList = new CustomList<T>();
 
-            for(int i = 0; i < List1.Count; i++)
+            for (int i = 0; i < List1.Count; i++)
             {
                 newList.Add(List1[i]);
             }
@@ -73,22 +77,22 @@ namespace Custom_List_Project
             return newList;
         }
 
-        public static CustomList<T> operator - (CustomList<T> List1, CustomList<T> List2) 
+        public static CustomList<T> operator -(CustomList<T> List1, CustomList<T> List2)
         {
             CustomList<T> newList = new CustomList<T>();
             newList = List1;
 
             for (int i = 0; i < newList.Count; i++)
             {
-               for (int j = 0; j < List2.Count; j++)
+                for (int j = 0; j < List2.Count; j++)
                 {
                     if (newList[i].CompareTo(List2[j]) == 0)
                     {
-
+                        newList.Remove(newList[i]);
                     }
                 }
                 newList.Remove(newList[i]);
-            }            
+            }
 
             return newList;
         }
