@@ -61,6 +61,11 @@ namespace Custom_List_Project
             T[] temp = new T[capacity * 2];
             int itemsRemoved = 0;
 
+            if (count == 0)
+            {
+                ArgumentOutOfRangeException e = new ArgumentOutOfRangeException();
+                throw e;
+            }
             for (int i = 0; i <= count; i++)
             {
                 if(!items[i].Equals(value))
