@@ -106,11 +106,17 @@ namespace Custom_List_Project
 
         public override string ToString()
         {
-            string toString = "";
+            var sb = new StringBuilder();
+            string toString;
             for (int i = 0; i < Count; i++)
             {
-
+                sb.Append(this[i].ToString());
+                if (i < Count - 1)
+                {
+                    sb.Append(", ");
+                }
             }
+            toString = sb.ToString();
             return toString;
         }
 

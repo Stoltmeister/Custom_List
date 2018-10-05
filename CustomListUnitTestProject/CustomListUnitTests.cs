@@ -398,18 +398,6 @@ namespace CustomListUnitTestProject
             //Assert
             Assert.AreEqual(expected[3], newList[3]);
         }
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void PlusOverload_TwoNullLists_()
-        {
-            //Arrange
-            CustomList<int> customList = new CustomList<int>();
-            CustomList<int> customList1 = new CustomList<int>();
-            CustomList<int> newList = new CustomList<int>();
-
-            //Act
-            newList = customList + customList1;
-        }
 
         // *** '-' Operator Overload Tests ***
 

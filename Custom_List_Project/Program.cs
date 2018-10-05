@@ -10,17 +10,26 @@ namespace Custom_List_Project
     {
         static void Main(string[] args)
         {
-            CustomList<int> customList = new CustomList<int>() { 11, 2 };
-            CustomList<int> customList1 = new CustomList<int>() { 2, 11 };
-            CustomList<int> actualList = new CustomList<int>();
-            int actual = 0;
-            int expected = 0;
+            CustomList<int> customList = new CustomList<int>() { 11, 9, 7, 8 };
+            string expected = "11,9,7,8";
             //Act
-            actualList = customList - customList1;
-            actual = actualList.Count;
+            string actual = customList.ToString();
 
-            Console.WriteLine(actualList[0]);
+            Console.WriteLine(actual);
             Console.ReadLine();
+
+
+            //CustomList<int> customList = new CustomList<int>() { 11, 2 };
+            //CustomList<int> customList1 = new CustomList<int>() { 2, 11 };
+            //CustomList<int> actualList = new CustomList<int>();
+            //int actual = 0;
+            //int expected = 0;
+            ////Act
+            //actualList = customList - customList1;
+            //actual = actualList.Count;
+
+            //Console.WriteLine(actualList[0]);
+            //Console.ReadLine();
 
             //CustomList<int> customList = new CustomList<int>() { 11, 2 };
             //CustomList<int> customList1 = new CustomList<int>() { 2, 44 };
