@@ -50,7 +50,7 @@ namespace Custom_List_Project
             {
                 capacity = capacity * 2;
             }
-            temp[Count] = value;
+            temp[count] = value;
             count++;
             items = temp;
             SetCount();
@@ -59,16 +59,20 @@ namespace Custom_List_Project
         public void Remove(T value)
         {
             T[] temp = new T[capacity * 2];
+            int itemsRemoved = 0;
 
-            for (int i = 0; i < Count; i++)
+            for (int i = 0; i <= count; i++)
             {
                 if(!items[i].Equals(value))
                 {
-                    temp[i] = items[i];
-                }                
-            }
-            temp[Count] = value;
-            count++;
+                    temp[i-itemsRemoved] = items[i];
+                }
+                else if(items[i].Equals(value))
+                {
+                    count--;
+                    itemsRemoved++;
+                }
+            }            
             items = temp;
             SetCount();
         }
@@ -109,25 +113,25 @@ namespace Custom_List_Project
             return newList;
         }
 
-        //public static CustomList<T> operator -(CustomList<T> List1, CustomList<T> List2)
-        //{
-        //    CustomList<T> newList = new CustomList<T>();
-        //    newList = List1;
+        public static CustomList<T> operator -(CustomList<T> List1, CustomList<T> List2)
+        {
+            CustomList<T> newList = new CustomList<T>();
+            newList = List1;
 
-        //    for (int i = 0; i < newList.Count; i++)
-        //    {
-        //        for (int j = 0; j < List2.Count; j++)
-        //        {
-        //            if (newList[i].Equals(List2[j]) == 0)
-        //            {
-        //                newList.Remove(newList[i]);
-        //            }
-        //        }
-        //        newList.Remove(newList[i]);
-        //    }
+            for (int i = 0; i < newList.Count; i++)
+            {
+                for (int j = 0; j < List2.Count; j++)
+                {
+                    if (newList[i].Equals(List2[j]))
+                    {
+                        newList.Remove(newList[i]);
+                    }
+                }
+                newList.Remove(newList[i]);
+            }
 
-        //    return newList;
-        //}
+            return newList;
+        }
 
         //public CustomList<T> Zip(CustomList<T> List1, CustomList<T> List2)
         //{
@@ -154,7 +158,7 @@ namespace Custom_List_Project
         //        }
         //    }
         //    return newList;
-        //}       
+        //}
 
     }
 }
