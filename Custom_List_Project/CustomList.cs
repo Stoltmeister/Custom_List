@@ -11,9 +11,9 @@ namespace Custom_List_Project
     public class CustomList<T> : IEnumerable<T>
     {
         T[] items = new T[1];
-        private int count = 0;        
+        private int count = 0;
         private int capacity = 4;
-        
+
         IEnumerator IEnumerable.GetEnumerator()
         {
             return this.GetEnumerator();
@@ -21,7 +21,7 @@ namespace Custom_List_Project
         public IEnumerator<T> GetEnumerator()
         {
             for (int i = 0; i < count; i++)
-            {                
+            {
                 yield return items[i];
             }
         }
@@ -29,10 +29,21 @@ namespace Custom_List_Project
         // indexer
         public T this[int i]
         {
-            get { return items[i]; }
-            set { items[i] = value; }
+            get
+            {
+                if (i >= count)
+                {
+                    ArgumentOutOfRangeException e = new ArgumentOutOfRangeException();
+                    throw e;
+                }
+                return items[i];
+            }
+            set
+            {
+                items[i] = value;
+            }
         }
-        
+
         public int Count
         {
             get => count;
@@ -68,16 +79,16 @@ namespace Custom_List_Project
             }
             for (int i = 0; i <= count; i++)
             {
-                if(!items[i].Equals(value))
+                if (!items[i].Equals(value))
                 {
-                    temp[i-itemsRemoved] = items[i];
+                    temp[i - itemsRemoved] = items[i];
                 }
-                else if(items[i].Equals(value))
+                else if (items[i].Equals(value))
                 {
                     count--;
                     itemsRemoved++;
                 }
-            }            
+            }
             items = temp;
             SetCount();
         }
