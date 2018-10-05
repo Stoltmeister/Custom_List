@@ -11,19 +11,20 @@ namespace Custom_List_Project
     public class CustomList<T> : IEnumerable where T : IComparable
     {
         T[] items = new T[1];
-        int count;
-        
+        private int count;        
+        private int capacity;
         
         public IEnumerator GetEnumerator()
         {
             return (IEnumerator)this;
-
+            
             //for (int i = 0; i < this.count; i++)
             //{
             //    T element = this[i];
             //    yield return element;
             //}
         }
+
         // indexer
         public T this[int i]
         {
@@ -38,19 +39,39 @@ namespace Custom_List_Project
         {
             get => count;
         }
-        public void Add(T element)
+        // Check
+        public void Add(T value)
         {
+            T[] temp = new T[capacity * 2];
 
+            for (int i = 0; i < Count; i++)
+            {
+                temp[i] = items[i];
+            }
+            if (Count >= capacity)
+            {
+                capacity = capacity * 2;
+            }
+            temp[Count] = value;
+            count++;
+            items = temp;
         }
 
         public void Remove(T element)
         {
-
+            for (int i = 0; i < this.Count; i++)
+            {
+                if (this[i].Equals(element))
+                {
+                    // this[i] = null;
+                    return;
+                }
+            }
         }
 
         private void SetCount()
         {
-            foreach (T e in this)
+            foreach (T value in this)
             {
                 count++;
             }
@@ -97,7 +118,7 @@ namespace Custom_List_Project
             return newList;
         }
 
-        public static CustomList<T> Zip(CustomList<T> List1, CustomList<T> List2)
+        public CustomList<T> Zip(CustomList<T> List1, CustomList<T> List2)
         {
             CustomList<T> newList = new CustomList<T>();
             int highestCount;
@@ -122,8 +143,7 @@ namespace Custom_List_Project
                 }
             }
             return newList;
-        }
-
+        }       
 
     }
 }
