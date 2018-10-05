@@ -31,11 +31,12 @@ namespace Custom_List_Project
         {
             get
             {
-                if (i >= count) // FIX OTHER METHODS TO WORK WITH THIS?
+                if (i >= count) 
                 {
                     return default(T);
                     //ArgumentOutOfRangeException e = new ArgumentOutOfRangeException();
                     //throw e;
+                    // should be working as currently coded
                 }
                 return items[i];
             }

@@ -1,0 +1,24 @@
+CustomList<T> Operator '-'(CustomList<T> List1, CustomList<T> List2) Overload Method
+
+- Removes values from List1 that List2 contains
+
+
+Signature: 
+
+ public static CustomList<T> operator -(CustomList<T> List1, CustomList<T> List2)
+
+-----------------------------------------------------------------------------------------
+
+Parameters:
+
+List1, List2
+
+The List1 is the CustomList<T> that is being modified. List2 is the CustomList<T> whose values will be removed from List1 if there are matching T values.
+
+Returns:
+
+newList CustomList<T> (Identical to List1 if no matching elements, altered to subtract matching values if they are present).
+
+Implements:
+
+Remove(T value) 
