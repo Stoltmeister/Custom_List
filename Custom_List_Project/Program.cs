@@ -10,13 +10,36 @@ namespace Custom_List_Project
     {
         static void Main(string[] args)
         {
+
+            //Arrange
             CustomList<int> customList = new CustomList<int>() { 11, 9, 7, 8 };
-            string expected = "11,9,7,8";
+            CustomList<int> customList1 = new CustomList<int>() { 66, 77 };
+            CustomList<int> expected = new CustomList<int>() { 11, 66, 9, 77, 7, 8 };
+            CustomList<int> actual = new CustomList<int>();
             //Act
-            string actual = customList.ToString();
+            actual = customList.Zip(customList1);
 
             Console.WriteLine(actual);
+            Console.WriteLine(expected);
             Console.ReadLine();
+
+            //CustomList<int> customList = new CustomList<int>() { 11, 2, 7, 8 };
+            //CustomList<int> customList1 = new CustomList<int>() { 66, 77 };
+            //int expected = 6;
+            //int actual;
+            //CustomList<int> newList = new CustomList<int>();
+            ////Act
+            //newList = customList.Zip(customList1);
+            //Console.WriteLine(newList);
+            //Console.ReadLine();
+
+            //CustomList<int> customList = new CustomList<int>() { 11, 9, 7, 8 };
+            //string expected = "11,9,7,8";
+            ////Act
+            //string actual = customList.ToString();
+
+            //Console.WriteLine(actual);
+            //Console.ReadLine();
 
 
             //CustomList<int> customList = new CustomList<int>() { 11, 2 };

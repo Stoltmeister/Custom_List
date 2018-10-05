@@ -157,32 +157,32 @@ namespace Custom_List_Project
             return newList;
         }
 
-        //public CustomList<T> Zip(CustomList<T> List1, CustomList<T> List2)
-        //{
-        //    CustomList<T> newList = new CustomList<T>();
-        //    int highestCount;
+        public CustomList<T> Zip(CustomList<T> List2)
+        {
+            CustomList<T> newList = new CustomList<T>();
+            int highestCount;
 
-        //    if (List1.Count > List2.Count)
-        //    {
-        //        highestCount = List1.Count;
-        //    }
-        //    else
-        //    {
-        //        highestCount = List2.Count;
-        //    }
-        //    for (int i = 0; i < highestCount; i++)
-        //    {
-        //        if (List1[i] != null)
-        //        {
-        //            newList.Add(List1[i]);
-        //        }
-        //        if (List2[i] != null)
-        //        {
-        //            newList.Add(List2[i]);
-        //        }
-        //    }
-        //    return newList;
-        //}
+            if (Count > List2.Count)
+            {
+                highestCount = Count;
+            }
+            else
+            {
+                highestCount = List2.Count;
+            }
+            for (int i = 0; i < highestCount; i++)
+            {
+                if (i < Count)
+                {
+                    newList.Add(this[i]);
+                }
+                if (i < List2.Count)
+                {
+                    newList.Add(List2[i]);
+                }
+            }
+            return newList;
+        }
 
     }
 }
