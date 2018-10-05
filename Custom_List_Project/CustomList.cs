@@ -11,8 +11,8 @@ namespace Custom_List_Project
     public class CustomList<T> : IEnumerable where T : IComparable
     {
         T[] items = new T[1];
-        private int count;        
-        private int capacity;
+        private int count = 0;        
+        private int capacity = 4;
         
         public IEnumerator GetEnumerator()
         {
@@ -28,8 +28,8 @@ namespace Custom_List_Project
         // indexer
         public T this[int i]
         {
-            get { return this[i]; }
-            set { this[i] = value; }
+            get { return items[i]; }
+            set { items[i] = value; }
         }
         public int CompareTo(object list)
         {
@@ -71,6 +71,7 @@ namespace Custom_List_Project
 
         private void SetCount()
         {
+            count = 0;
             foreach (T value in this)
             {
                 count++;
