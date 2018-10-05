@@ -31,10 +31,11 @@ namespace Custom_List_Project
         {
             get
             {
-                if (i >= count)
+                if (i >= count) // FIX OTHER METHODS TO WORK WITH THIS?
                 {
-                    ArgumentOutOfRangeException e = new ArgumentOutOfRangeException();
-                    throw e;
+                    return default(T);
+                    //ArgumentOutOfRangeException e = new ArgumentOutOfRangeException();
+                    //throw e;
                 }
                 return items[i];
             }
@@ -116,7 +117,7 @@ namespace Custom_List_Project
         public static CustomList<T> operator +(CustomList<T> List1, CustomList<T> List2)
         {
             CustomList<T> newList = new CustomList<T>();
-
+            
             for (int i = 0; i < List1.Count; i++)
             {
                 newList.Add(List1[i]);
@@ -141,9 +142,10 @@ namespace Custom_List_Project
                     if (newList[i].Equals(List2[j]))
                     {
                         newList.Remove(newList[i]);
+                        i = 0;
+                        j = -1;
                     }
-                }
-                newList.Remove(newList[i]);
+                }               
             }
 
             return newList;

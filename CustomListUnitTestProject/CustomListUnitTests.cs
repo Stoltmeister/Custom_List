@@ -380,7 +380,7 @@ namespace CustomListUnitTestProject
             newList = customList + customList1;            
 
             //Assert
-            Assert.AreEqual(expected, newList);
+            Assert.AreEqual(expected[2], newList[2]);
         }
         [TestMethod]
         public void PlusOverload_ThreeListsT_NewListContainsAllValuesOfEachList()
@@ -396,7 +396,7 @@ namespace CustomListUnitTestProject
             newList = customList + customList1 + customList2;
 
             //Assert
-            Assert.AreEqual(expected, newList);
+            Assert.AreEqual(expected[3], newList[3]);
         }
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
@@ -419,11 +419,12 @@ namespace CustomListUnitTestProject
             //Arrange
             CustomList<int> customList = new CustomList<int>() { 11, 2 };
             CustomList<int> customList1 = new CustomList<int>() { 2, 11 };
-            CustomList<int> actual = new CustomList<int>();
-            CustomList<int> expected = new CustomList<int>();
+            CustomList<int> actualList = new CustomList<int>();
+            int actual = 0;
+            int expected = 0;
             //Act
-            actual = customList - customList1;
-
+            actualList = customList - customList1;
+            actual = actualList.Count;
             //Assert
             Assert.AreEqual(expected, actual);
         }
@@ -454,7 +455,7 @@ namespace CustomListUnitTestProject
             actual = customList - customList1;
 
             //Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected[0], actual[0]);
         }
 
         [TestMethod]
@@ -470,7 +471,7 @@ namespace CustomListUnitTestProject
             actual = customList - customList1 - customList2;
 
             //Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected[1], actual[1]);
         }
 
         //[TestMethod]

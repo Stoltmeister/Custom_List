@@ -10,7 +10,76 @@ namespace Custom_List_Project
     {
         static void Main(string[] args)
         {
+            CustomList<int> customList = new CustomList<int>() { 11, 2 };
+            CustomList<int> customList1 = new CustomList<int>() { 2, 11 };
+            CustomList<int> actualList = new CustomList<int>();
+            int actual = 0;
+            int expected = 0;
+            //Act
+            actualList = customList - customList1;
+            actual = actualList.Count;
 
+            Console.WriteLine(actualList[0]);
+            Console.ReadLine();
+
+            //CustomList<int> customList = new CustomList<int>() { 11, 2 };
+            //CustomList<int> customList1 = new CustomList<int>() { 2, 44 };
+            //CustomList<int> expected = new CustomList<int>() { 11 };
+            //CustomList<int> actual = new CustomList<int>();
+            ////Act
+            //actual = customList - customList1;
+
+            //for(int i = 0; i < actual.Count; i++)
+            //{
+            //    Console.WriteLine(actual[i]);
+            //}
+            //Console.ReadLine();
+            ////Arrange
+            //CustomList<int> customList = new CustomList<int>() { 11, 2, 44, 55};
+            //CustomList<int> customList1 = new CustomList<int>() { 2, 44 };
+            //CustomList<int> list2 = new CustomList<int>() { 11 };
+            //CustomList<int> actual = new CustomList<int>();
+            ////Act
+            //actual = customList - customList1 - list2;
+            //Console.WriteLine(actual[1]);
+            //Console.ReadLine();
+            //for (int i = 0; i < actual.Count; i++)
+            //{
+            //    Console.WriteLine(actual[i]);
+            //}
+            //CustomList<int> customList = new CustomList<int>();
+            //customList.Add(1);
+            //customList.Add(2);
+            //customList.Add(3);
+            //customList.Add(4);
+            //customList.Add(5);
+            //customList.Add(6);
+            //customList.Add(7);
+            //customList.Add(8);
+            //customList.Add(9);
+            //customList.Add(10);
+            //customList.Add(11);
+            //customList.Add(12);
+            //customList.Remove(1);
+            //customList.Remove(4);
+            //customList.Remove(5);
+
+            //Console.WriteLine(customList[3]);
+            //Console.ReadLine();
+
+
+            //CustomList<int> customList = new CustomList<int>() { 11, 2, 7, 8 };
+            //CustomList<int> customList1 = new CustomList<int>() { 2, 44, 66, 77 };
+            ////CustomList<int> customList2 = new CustomList<int>() { 9, 8, 23 };
+            //CustomList<int> expected = new CustomList<int>() { 11, 7 };
+            //CustomList<int> actual = new CustomList<int>();
+            //actual = customList - customList1;
+
+            //for (int i = 0; i < actual.Count; i++)
+            //{
+            //    Console.WriteLine(actual[i]);
+            //}
+            //Console.ReadLine();
 
 
             //CustomList<int> list1 = new CustomList<int>() { 1, 2, 3, 4, 5 };
