@@ -188,11 +188,10 @@ namespace Custom_List_Project
         public CustomList<T> Sort(int start = 0) 
         {
             string[] temp = new string[this.count];
-            int[][] originalValues = new int[this.count][];
+            int[,] originalValues = new int[count,2];
             CustomList<T> sortedList = new CustomList<T>();
             int mid = count / 2;
             int end = count - 1;
-
 
             if (count == 1)
             {
@@ -204,12 +203,25 @@ namespace Custom_List_Project
                 for (int i = 0; i < count; i++)
                 {
                     temp[i] = this[i].ToString().ToUpper();
+                    originalValues[i,0] =  i;
+                    originalValues[i, 1] = CharToInt(temp[i][0]);
                 }
+
             }
-          
             
 
 
+        }
+
+        private static int[] SortNumbers(int[] unsortedArray)
+        {
+            int[] sortedArray = new int[2];
+            if (unsortedArray[0] > unsortedArray[1])
+            {
+                sortedArray[0] = unsortedArray[1];
+                sortedArray[1] = unsortedArray[0];
+            }
+            return sortedArray;
         }
 
         private static int CharToInt(char x)
