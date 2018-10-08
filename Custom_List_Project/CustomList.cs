@@ -185,9 +185,9 @@ namespace Custom_List_Project
             return newList;
         }
 
-        public CustomList<T> Sort(int start = 0) 
+        public CustomList<T> Sort() 
         {
-            string[] temp = new string[this.count];
+            List<string> temp = new List<string>();
             int[,] originalValues = new int[count,2];
             CustomList<T> sortedList = new CustomList<T>();
             int mid = count / 2;
@@ -206,22 +206,61 @@ namespace Custom_List_Project
                     originalValues[i,0] =  i;
                     originalValues[i, 1] = CharToInt(temp[i][0]);
                 }
-
             }
-            
+            else
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    originalValues[i, 0] = i;
+                    originalValues[i, 1] = temp[i][0];
+                }
+            }
 
+
+
+        }
+
+        private static List<int> Merge(List<int> L1, List<int> L2)
+        {
+            List<int> sortedList = new List<int>();
+
+            while (L1.Count > 0 && L2.Count > 0)
+            {
+                if (L1[0] > L2[0])
+                {
+                    sortedList.Add(L1[0]);
+                    L1.Remove(L1[0]);
+                }
+                else
+                {
+                    sortedList.Add(L2[0]);
+                    L2.Remove(L2[0]);
+                }
+            }
+            while (L1.Count > 0)
+            {
+                sortedList.Add(L1[0]);
+                L1.Remove(L1[0]);
+            }
+            while (L2.Count > 0)
+            {
+                sortedList.Add(L2[0]);
+                L2.Remove(L2[0]);
+            }
+
+            return sortedList;
 
         }
 
         private static int[] SortNumbers(int[] unsortedArray)
         {
-            int[] sortedArray = new int[2];
+            int[] sorted = new int[2];
             if (unsortedArray[0] > unsortedArray[1])
             {
-                sortedArray[0] = unsortedArray[1];
-                sortedArray[1] = unsortedArray[0];
+                sorted[0] = unsortedArray[1];
+                sorted[1] = unsortedArray[0];
             }
-            return sortedArray;
+            return sorted;
         }
 
         private static int CharToInt(char x)
