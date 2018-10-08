@@ -16,7 +16,7 @@ namespace Custom_List_Project
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return this.GetEnumerator();
+            return GetEnumerator();
         }
         public IEnumerator<T> GetEnumerator()
         {
@@ -185,5 +185,86 @@ namespace Custom_List_Project
             return newList;
         }
 
+        public CustomList<T> Sort(int start = 0) 
+        {
+            string[] temp = new string[this.count];
+            int[][] originalValues = new int[this.count][];
+            CustomList<T> sortedList = new CustomList<T>();
+            int mid = count / 2;
+            int end = count - 1;
+
+
+            if (count == 1)
+            {
+                return this;
+            }
+
+            if (!IsNum(this))
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    temp[i] = this[i].ToString().ToUpper();
+                }
+            }
+          
+            
+
+
+        }
+
+        private static int CharToInt(char x)
+        {
+            switch (x)
+            {
+                case 'A': return 1;
+                case 'B': return 2;
+                case 'C': return 3;
+                case 'D': return 4;
+                case 'E': return 5;
+                case 'F': return 6;
+                case 'G': return 7;
+                case 'H': return 8;
+                case 'I': return 9;
+                case 'J': return 10;
+                case 'K': return 11;
+                case 'L': return 12;
+                case 'M': return 13;
+                case 'N': return 14;
+                case 'O': return 15;
+                case 'P': return 16;
+                case 'Q': return 17;
+                case 'R': return 18;
+                case 'S': return 19;
+                case 'T': return 20;
+                case 'U': return 21;
+                case 'V': return 22;
+                case 'W': return 23;
+                case 'X': return 24;
+                case 'Y': return 25;
+                case 'Z': return 26;
+                default: return 0;
+            }
+        }
+
+        private static bool IsNum(CustomList<T> list)
+        {
+            switch (Type.GetTypeCode(list.GetType()))
+            {
+                case TypeCode.Byte:
+                case TypeCode.SByte:
+                case TypeCode.UInt16:
+                case TypeCode.UInt32:
+                case TypeCode.UInt64:
+                case TypeCode.Int16:
+                case TypeCode.Int32:
+                case TypeCode.Int64:
+                case TypeCode.Decimal:
+                case TypeCode.Double:
+                case TypeCode.Single:
+                    return true;
+                default:
+                    return false;
+            }
+        }
     }
 }
