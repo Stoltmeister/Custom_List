@@ -11,17 +11,17 @@ namespace Custom_List_Project
         static void Main(string[] args)
         {
 
-            //Arrange
-            CustomList<int> customList = new CustomList<int>() { 11, 9, 7, 8 };
-            CustomList<int> customList1 = new CustomList<int>() { 66, 77 };
-            CustomList<int> expected = new CustomList<int>() { 11, 66, 9, 77, 7, 8 };
-            CustomList<int> actual = new CustomList<int>();
-            //Act
-            actual = customList.Zip(customList1);
+            ////Arrange
+            //CustomList<int> customList = new CustomList<int>() { 11, 9, 7, 8 };
+            //CustomList<int> customList1 = new CustomList<int>() { 66, 77 };
+            //CustomList<int> expected = new CustomList<int>() { 11, 66, 9, 77, 7, 8 };
+            //CustomList<int> actual = new CustomList<int>();
+            ////Act
+            //actual = customList.Zip(customList1);
 
-            Console.WriteLine(actual);
-            Console.WriteLine(expected);
-            Console.ReadLine();
+            //Console.WriteLine(actual);
+            //Console.WriteLine(expected);
+            //Console.ReadLine();
 
             //CustomList<int> customList = new CustomList<int>() { 11, 2, 7, 8 };
             //CustomList<int> customList1 = new CustomList<int>() { 66, 77 };
@@ -130,6 +130,7 @@ namespace Custom_List_Project
             //customList.Remove(value);
             //Console.WriteLine(customList[0]);
             //Console.ReadLine();
+
 
         }
     }
